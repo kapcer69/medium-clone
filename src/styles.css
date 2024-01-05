@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Merriweather Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
+  font-family: 'Source Serif 4', serif;
+  font-family: 'Titillium Web', sans-serif;
+}
