@@ -1,3 +1,4 @@
+@if (data$ | async; as data) {
 <div class="auth-page">
   <div class="container page">
     <div class="row">
@@ -6,7 +7,9 @@
         <p class="text-xs-center">
           <a routerLink="/login">Have an account?</a>
         </p>
-        <!-- BACKEND ERRORS HERE -->
+        @if (data.backendErrors) {
+        <mc-backend-error-messages [backendErrors]="data.backendErrors" />
+        }
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <fieldset class="form-group">
             <input
@@ -35,7 +38,7 @@
           <button
             type="submit"
             class="btn btn-lg btn-primary pull-xs-right"
-            [disabled]="isSubmitting$ | async"
+            [disabled]="data.isSubmitting"
           >
             Sign up
           </button>
@@ -44,3 +47,4 @@
     </div>
   </div>
 </div>
+}
