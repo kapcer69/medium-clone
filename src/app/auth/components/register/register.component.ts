@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { register } from '../../store/actions.store';
+import { authActions } from '../../store/actions.store';
 import { RegisterRequestInterface } from '../../interfaces/registerRequest.interface';
 import { RouterLink } from '@angular/router';
-import { AuthStateInterface } from '../../interfaces/authState.interface';
 import { selectIsSubmitting } from '../../store/reducers.store';
 
 @Component({
@@ -32,6 +31,6 @@ export class RegisterComponent {
     const request: RegisterRequestInterface = {
       user: this.registerForm.getRawValue(),
     };
-    this.store.dispatch(register({ request }));
+    this.store.dispatch(authActions.register({ request }));
   }
 }
