@@ -2,6 +2,7 @@ import { createActionGroup, props } from '@ngrx/store';
 import { RegisterRequestInterface } from '../interfaces/registerRequest.interface';
 import { CurrentUserInterface } from '../../shared/interfaces/currentUser.interface';
 import { BackendErrorsInterface } from '../../shared/interfaces/backendErrors.interface';
+import { LoginRequestInterface } from '../interfaces/loginRequest.interface';
 
 export const authActions = createActionGroup({
   source: 'auth',
@@ -9,5 +10,9 @@ export const authActions = createActionGroup({
     Register: props<{ request: RegisterRequestInterface }>(),
     'Register success': props<{ currentUser: CurrentUserInterface }>(),
     'Register failure': props<{ errors: BackendErrorsInterface }>(),
+
+    Login: props<{ request: LoginRequestInterface }>(),
+    'Login success': props<{ currentUser: CurrentUserInterface }>(),
+    'Login failure': props<{ errors: BackendErrorsInterface }>(),
   },
 });
