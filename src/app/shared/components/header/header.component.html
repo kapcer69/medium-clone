@@ -27,7 +27,7 @@
           {{ data.currentUser.username }}
         </a>
       </li>
-      } @else {
+      } @else if (data.currentUser === null) {
       <li class="nav-item">
         <a class="nav-link" routerLink="/login">Sign in</a>
       </li>

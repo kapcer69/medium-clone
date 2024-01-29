@@ -17,6 +17,12 @@ export class AuthService {
     return response.user;
   }
 
+  getCurrentUser(): Observable<CurrentUserInterface> {
+    return this.http
+      .get<AuthResponseInterface>(`${environment.apiUrl}/user`)
+      .pipe(map(this.getUser));
+  }
+
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
     return this.http
       .post<AuthResponseInterface>(`${environment.apiUrl}/users`, data)
