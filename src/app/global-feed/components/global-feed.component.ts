@@ -7,4 +7,6 @@ import { FeedComponent } from '../../shared/components/feed/feed.component';
   standalone: true,
   imports: [FeedComponent],
 })
-export class GlobalFeedComponent {}
+export class GlobalFeedComponent {
+  apiUrl = '/articles';
+}
