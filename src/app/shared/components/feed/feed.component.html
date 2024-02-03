@@ -1,7 +1,7 @@
 @if (data$ | async; as data) { @if (data.isLoading) {
-<div>Loading...</div>
+<mc-loading />
 } @if (data.error) {
-<div>{{ data.error }}</div>
+<mc-error-message [message]="data.error" />
 } @if (data.feed) { @for (article of data.feed.articles; track $index) {
 <div class="article-preview">
   <div class="article-meta">
