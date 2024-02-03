@@ -1,12 +1,12 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { AuthService } from '../services/auth.service';
-import { authActions } from './actions.store';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { CurrentUserInterface } from '../../shared/interfaces/currentUser.interface';
-import { HttpErrorResponse } from '@angular/common/http';
 import { PersistenceService } from '../../shared/services/persistence.service';
-import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { authActions } from './actions.store';
 
 export const getCurrentUserEffect = createEffect(
   (

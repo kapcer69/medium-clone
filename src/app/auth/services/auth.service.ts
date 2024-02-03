@@ -1,11 +1,11 @@
-import { RegisterRequestInterface } from './../interfaces/registerRequest.interface';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import { CurrentUserInterface } from '../../shared/interfaces/currentUser.interface';
 import { AuthResponseInterface } from '../interfaces/authResponse.interface';
-import { environment } from '../../../environments/environment';
 import { LoginRequestInterface } from '../interfaces/loginRequest.interface';
+import { RegisterRequestInterface } from './../interfaces/registerRequest.interface';
 
 @Injectable({
   providedIn: 'root',

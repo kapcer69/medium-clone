@@ -1,9 +1,9 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { FeedService } from '../services/feed.service';
-import { feedActions } from './actions.store';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { GetFeedResponseInterface } from '../interfaces/getFeedResponse.interface';
+import { FeedService } from '../services/feed.service';
+import { feedActions } from './actions.store';
 
 export const getFeedEffect = createEffect(
   (actions$ = inject(Actions), feedService = inject(FeedService)) => {

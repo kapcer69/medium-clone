@@ -1,14 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { feedActions } from './store/actions.store';
 import { combineLatest } from 'rxjs';
+import { feedActions } from './store/actions.store';
 import {
   selectError,
   selectFeedData,
   selectIsLoading,
 } from './store/reducers.store';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'mc-feed',
