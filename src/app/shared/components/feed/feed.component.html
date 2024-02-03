@@ -25,4 +25,10 @@
     TAG LIST
   </a>
 </div>
-PAGINATION } } }
+<mc-pagination
+  [total]="data.feed.articlesCount"
+  [limit]="limit"
+  [url]="baseUrl"
+  [currentPage]="currentPage"
+/>
+} } }
