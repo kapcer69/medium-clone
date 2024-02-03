@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
+import queryString from 'query-string';
 import { combineLatest } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
@@ -51,6 +52,14 @@ export class FeedComponent implements OnInit {
   }
 
   fetchFeed() {
-    this.store.dispatch(feedActions.getFeed({ url: this.apiUrl }));
+    const offset = this.currentPage * this.limit - this.limit;
+    const parsedUrl = queryString.parseUrl(this.apiUrl);
+    const stringifiedParams = queryString.stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query,
+    });
+    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`;
+    this.store.dispatch(feedActions.getFeed({ url: apiUrlWithParams }));
   }
 }
