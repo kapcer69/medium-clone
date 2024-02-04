@@ -12,7 +12,7 @@ export class FeedService {
 
   getFeed(url: string): Observable<GetFeedResponseInterface> {
     return this.http.get<GetFeedResponseInterface>(
-      `${environment.apiUrl}${url}`
+      `${environment.apiUrl}${url}`,
     );
   }
 }

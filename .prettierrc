@@ -3,5 +3,13 @@
   "singleQuote": true,
   "printWidth": 80,
   "bracketSpacing": true,
-  "semi": true
+  "semi": true,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
 }

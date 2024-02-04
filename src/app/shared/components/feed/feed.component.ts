@@ -8,6 +8,7 @@ import { environment } from '../../../../environments/environment';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
 import { LoadingComponent } from '../loading/loading.component';
 import { PaginationComponent } from '../pagination/pagination.component';
+import { TagListComponent } from '../tag-list/tag-list.component';
 import { feedActions } from './store/actions.store';
 import {
   selectError,
@@ -25,6 +26,7 @@ import {
     ErrorMessageComponent,
     LoadingComponent,
     PaginationComponent,
+    TagListComponent,
   ],
 })
 export class FeedComponent implements OnInit {
