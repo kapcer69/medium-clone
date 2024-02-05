@@ -32,12 +32,12 @@
           <mc-tag-list [tags]="article.tagList" />
         </a>
       </div>
-      <mc-pagination
-        [total]="data.feed.articlesCount"
-        [limit]="limit"
-        [url]="baseUrl"
-        [currentPage]="currentPage"
-      />
     }
+    <mc-pagination
+      [total]="data.feed.articlesCount"
+      [limit]="limit"
+      [url]="baseUrl"
+      [currentPage]="currentPage"
+    />
   }
 }
