@@ -1,0 +1,53 @@
+@if (data$ | async; as data) {
+  <div class="article-page">
+    @if (data.isLoading) {
+      <mc-loading />
+    }
+    @if (data.error) {
+      <mc-error-message />
+    }
+    @if (data.article) {
+      <div class="banner">
+        <div class="container">
+          <h1>{{ data.article.title }}</h1>
+          <div class="article-meta">
+            <a [routerLink]="['/profile', data.article.author.username]">
+              <img [src]="data.article.author.image" />
+            </a>
+            <div class="info">
+              <a [routerLink]="['/profile', data.article.author.username]">
+                {{ data.article.author.username }}
+              </a>
+              <span class="date">{{ data.article.createdAt }}</span>
+            </div>
+            @if (data.isAuthor) {
+              <button class="btn btn-sm btn-outline-secondary">
+                <a [routerLink]="['/articles', data.article.slug, 'edit']">
+                  <i class="ion-edit"></i> Edit Article
+                </a>
+              </button>
+              <button class="btn btn-sm btn-outline-danger">
+                <a [routerLink]="['/articles', data.article.slug, 'delete']">
+                  <i class="ion-trash-a"></i> Delete Article
+                </a>
+              </button>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="container page">
+        <div class="row article-content">
+          <div class="col-md-12">
+            <p>
+              {{ data.article.body }}
+            </p>
+            <h2 id="introducing-ionic">Introducing RealWorld.</h2>
+            <p>It's a great solution for learning how other frameworks work.</p>
+            <mc-tag-list [tags]="data.article.tagList" />
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+}
