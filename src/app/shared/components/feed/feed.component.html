@@ -9,12 +9,12 @@
     @for (article of data.feed.articles; track $index) {
       <div class="article-preview">
         <div class="article-meta">
-          <a [routerLink]="['/profile', article.author.username]">
+          <a [routerLink]="['/profiles', article.author.username]">
             <img [src]="article.author.image" />
           </a>
           <div class="info">
             <a
-              [routerLink]="['/profile', article.author.username]"
+              [routerLink]="['/profiles', article.author.username]"
               class="author"
             >
               {{ article.author.username }}
