@@ -26,7 +26,10 @@
                   <i class="ion-edit"></i> Edit Article
                 </a>
               </button>
-              <button class="btn btn-sm btn-outline-danger">
+              <button
+                class="btn btn-sm btn-outline-danger"
+                (click)="deleteArticle()"
+              >
                 <a [routerLink]="['/articles', data.article.slug, 'delete']">
                   <i class="ion-trash-a"></i> Delete Article
                 </a>

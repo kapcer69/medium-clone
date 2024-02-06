@@ -2,6 +2,7 @@ import { Route } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
 import { ArticleComponent } from './components/article.component';
+import { ArticleService } from './services/article.service';
 import * as articleEffects from './store/effects.store';
 import { articleFeatureKey, articleReducer } from './store/reducers.store';
 
@@ -12,6 +13,7 @@ export const routes: Route[] = [
     providers: [
       provideEffects(articleEffects),
       provideState(articleFeatureKey, articleReducer),
+      ArticleService,
     ],
   },
 ];
