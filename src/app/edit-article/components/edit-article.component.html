@@ -1,0 +1,13 @@
+@if (data$ | async; as data) {
+  @if (data.isLoading) {
+    <mc-loading />
+  }
+  @if (data.initialValues) {
+    <mc-article-form
+      [initialValues]="data.initialValues"
+      [isSubmitting]="data.isSubmitting"
+      [errors]="data.backendErrors"
+      (articleSubmit)="onSubmit($event)"
+    />
+  }
+}
