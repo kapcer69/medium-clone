@@ -8,7 +8,7 @@ import { BackendErrorsInterface } from '../../interfaces/backendErrors.interface
   templateUrl: './backend-error-messages.component.html',
 })
 export class BackendErrorMessagesComponent implements OnInit {
-  @Input() backendErrors: BackendErrorsInterface = {};
+  @Input({ required: true }) backendErrors: BackendErrorsInterface = {};
   errorMessages: string[] = [];
 
   ngOnInit(): void {
