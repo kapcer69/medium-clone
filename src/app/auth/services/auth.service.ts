@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { CurrentUserInterface } from '../../shared/interfaces/currentUser.interface';
+import { CurrentUserRequestInterface } from '../../shared/interfaces/currentUserRequest.interface';
 import { AuthResponseInterface } from '../interfaces/authResponse.interface';
 import { LoginRequestInterface } from '../interfaces/loginRequest.interface';
 import { RegisterRequestInterface } from './../interfaces/registerRequest.interface';
@@ -20,6 +21,17 @@ export class AuthService {
   getCurrentUser(): Observable<CurrentUserInterface> {
     return this.http
       .get<AuthResponseInterface>(`${environment.apiUrl}/user`)
+      .pipe(map(this.getUser));
+  }
+
+  updateCurrentUser(
+    currentUserRequest: CurrentUserRequestInterface,
+  ): Observable<CurrentUserInterface> {
+    return this.http
+      .put<AuthResponseInterface>(
+        `${environment.apiUrl}/user`,
+        currentUserRequest,
+      )
       .pipe(map(this.getUser));
   }
 
