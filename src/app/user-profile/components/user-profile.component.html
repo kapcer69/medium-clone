@@ -1,0 +1,68 @@
+@if (data$ | async; as data) {
+  @if (data.isLoading) {
+    <mc-loading />
+  }
+  @if (data.userProfile) {
+    <div class="profile-page">
+      <div class="user-info">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-md-10 offset-md-1">
+              <img [src]="data.userProfile.image" class="user-img" />
+              <h4>{{ data.userProfile.username }}</h4>
+              <p>
+                {{ data.userProfile.bio }}
+              </p>
+              @if (data.isCurrentUserProfile) {
+                <button
+                  routerLink="/settings"
+                  class="btn btn-sm btn-outline-secondary action-btn"
+                >
+                  <i class="ion-gear-a"></i>
+                  &nbsp; Edit Profile Settings
+                </button>
+              } @else {
+                FOLLOW USER BUTTON
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-10 offset-md-1">
+            <div class="articles-toggle">
+              <ul class="nav nav-pills outline-active">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [routerLink]="['/profiles', data.userProfile.username]"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                  >
+                    My Articles
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    [routerLink]="[
+                      '/profiles',
+                      data.userProfile.username,
+                      'favorites'
+                    ]"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                  >
+                    Favorited Articles
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <mc-feed [apiUrl]="getApiUrl()" />
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+}

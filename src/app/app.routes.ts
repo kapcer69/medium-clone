@@ -31,6 +31,11 @@ export const routes: Routes = [
       import('./create-article/create-article.routes').then((m) => m.routes),
   },
   {
+    path: 'articles/:slug',
+    loadChildren: () =>
+      import('./article/article.routes').then((m) => m.routes),
+  },
+  {
     path: 'articles/:slug/edit',
     loadChildren: () =>
       import('./edit-article/edit-article.routes').then((m) => m.routes),
@@ -39,5 +44,15 @@ export const routes: Routes = [
     path: 'settings',
     loadChildren: () =>
       import('./settings/settings.routes').then((m) => m.routes),
+  },
+  {
+    path: 'profiles/:username',
+    loadChildren: () =>
+      import('./user-profile/user-profile.routes').then((m) => m.routes),
+  },
+  {
+    path: 'profiles/:username/favorites',
+    loadChildren: () =>
+      import('./user-profile/user-profile.routes').then((m) => m.routes),
   },
 ];

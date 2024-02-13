@@ -11,11 +11,11 @@
         <div class="container">
           <h1>{{ data.article.title }}</h1>
           <div class="article-meta">
-            <a [routerLink]="['/profile', data.article.author.username]">
+            <a [routerLink]="['/profiles', data.article.author.username]">
               <img [src]="data.article.author.image" />
             </a>
             <div class="info">
-              <a [routerLink]="['/profile', data.article.author.username]">
+              <a [routerLink]="['/profiles', data.article.author.username]">
                 {{ data.article.author.username }}
               </a>
               <span class="date">{{ data.article.createdAt }}</span>
