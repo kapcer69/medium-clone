@@ -11,6 +11,7 @@ import { Store } from '@ngrx/store';
 import queryString from 'query-string';
 import { combineLatest } from 'rxjs';
 import { environment } from '../../../../environments/environment';
+import { AddToFavoritesComponent } from '../add-to-favorites/add-to-favorites.component';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
 import { LoadingComponent } from '../loading/loading.component';
 import { PaginationComponent } from '../pagination/pagination.component';
@@ -33,6 +34,7 @@ import {
     LoadingComponent,
     PaginationComponent,
     TagListComponent,
+    AddToFavoritesComponent,
   ],
 })
 export class FeedComponent implements OnInit, OnChanges {

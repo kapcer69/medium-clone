@@ -21,9 +21,11 @@
             </a>
             <span class="date">{{ article.createdAt }}</span>
           </div>
-          <button class="btn btn-outline-primary btn-sm pull-xs-right">
-            <i class="ion-heart"></i> ADD TO FAVORITES
-          </button>
+          <mc-add-to-favorites
+            [isFavorited]="article.favorited"
+            [articleSlug]="article.slug"
+            [favoritesCount]="article.favoritesCount"
+          />
         </div>
         <a [routerLink]="['/articles', article.slug]" class="preview-link">
           <h1>{{ article.title }}</h1>

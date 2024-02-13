@@ -9,6 +9,8 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { routes } from './app.routes';
 import * as authEffects from './auth/store/effects.store';
 import { authFeatureKey, authReducer } from './auth/store/reducers.store';
+import { AddToFavoritesService } from './shared/components/add-to-favorites/services/add-to-favorites.service';
+import * as addToFavoritesEffects from './shared/components/add-to-favorites/store/effects.store';
 import * as feedEffects from './shared/components/feed/store/effects.store';
 import {
   feedFeatureKey,
@@ -31,7 +33,12 @@ export const appConfig: ApplicationConfig = {
     provideState(authFeatureKey, authReducer),
     provideState(feedFeatureKey, feedReducer),
     provideState(popularTagsFeatureKey, popularTagsReducer),
-    provideEffects(authEffects, feedEffects, getPopularTagsEffects),
+    provideEffects(
+      authEffects,
+      feedEffects,
+      getPopularTagsEffects,
+      addToFavoritesEffects,
+    ),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
@@ -40,5 +47,6 @@ export const appConfig: ApplicationConfig = {
       traceLimit: 75,
     }),
     provideRouterStore(),
+    AddToFavoritesService,
   ],
 };
