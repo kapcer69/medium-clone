@@ -1,0 +1,11 @@
+<button
+  class="btn btn-sm action-btn"
+  [ngClass]="{
+    'btn-outline-secondary': !isFollowing,
+    'btn-outline-danger': isFollowing
+  }"
+  (click)="handleFollow()"
+>
+  <i class="ion-plus-round" *ngIf="!isFollowing"></i>
+  {{ isFollowing ? 'Unfollow' : '&nbsp; Follow' }} {{ username }}
+</button>

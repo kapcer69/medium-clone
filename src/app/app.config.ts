@@ -16,6 +16,8 @@ import {
   feedFeatureKey,
   feedReducer,
 } from './shared/components/feed/store/reducers.store';
+import { FollowUserService } from './shared/components/follow-user/services/follow-user.service';
+import * as followUserEffects from './shared/components/follow-user/store/effects.store';
 import * as getPopularTagsEffects from './shared/components/popular-tags/store/effects.store';
 import {
   popularTagsFeatureKey,
@@ -38,6 +40,7 @@ export const appConfig: ApplicationConfig = {
       feedEffects,
       getPopularTagsEffects,
       addToFavoritesEffects,
+      followUserEffects,
     ),
     provideStoreDevtools({
       maxAge: 25,
@@ -48,5 +51,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideRouterStore(),
     AddToFavoritesService,
+    FollowUserService,
   ],
 };

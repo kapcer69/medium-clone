@@ -11,6 +11,7 @@ import { Store, select } from '@ngrx/store';
 import { combineLatest, filter, map } from 'rxjs';
 import { selectCurrentUser } from '../../auth/store/reducers.store';
 import { FeedComponent } from '../../shared/components/feed/feed.component';
+import { FollowUserComponent } from '../../shared/components/follow-user/components/follow-user-component';
 import { LoadingComponent } from '../../shared/components/loading/loading.component';
 import { CurrentUserInterface } from '../../shared/interfaces/currentUser.interface';
 import { UserProfileInterface } from '../interfaces/userProfile.interface';
@@ -31,6 +32,7 @@ import {
     RouterLinkActive,
     FeedComponent,
     LoadingComponent,
+    FollowUserComponent,
   ],
 })
 export class UserProfileComponent implements OnInit {

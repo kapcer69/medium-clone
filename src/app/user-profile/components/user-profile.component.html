@@ -22,7 +22,10 @@
                   &nbsp; Edit Profile Settings
                 </button>
               } @else {
-                FOLLOW USER BUTTON
+                <mc-follow-user
+                  [username]="data.userProfile.username"
+                  [isFollowing]="data.userProfile.following"
+                />
               }
             </div>
           </div>
