@@ -4,7 +4,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { ArticleInterface } from '../../shared/interfaces/article.interface';
 import { ArticleService as SharedArticleService } from '../../shared/services/article.service';
+import { GetCommentsResponseInterface } from '../interfaces/getCommentsResponse.interface';
 import { ArticleService } from '../services/article.service';
+import { CommentsService } from '../services/comments.service';
 import { articleActions } from './actions.store';
 
 export const getArticleEffect = createEffect(
@@ -58,4 +60,23 @@ export const redirectAfterDeleteEffect = createEffect(
     );
   },
   { functional: true, dispatch: false },
+);
+
+export const getCommentsEffect = createEffect(
+  (actions$ = inject(Actions), commentsService = inject(CommentsService)) => {
+    return actions$.pipe(
+      ofType(articleActions.getComments),
+      switchMap(({ slug }) => {
+        return commentsService.getComments(slug).pipe(
+          map((comments: GetCommentsResponseInterface) => {
+            return articleActions.getCommentsSuccess({ comments });
+          }),
+          catchError(() => {
+            return of(articleActions.getCommentsError());
+          }),
+        );
+      }),
+    );
+  },
+  { functional: true },
 );

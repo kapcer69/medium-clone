@@ -1,0 +1,37 @@
+@if (comments) {
+  <div class="row">
+    @if (isLoading) {
+      <mc-loading />
+    }
+    @if (error) {
+      <mc-error-message />
+    }
+    @for (comment of comments; track comment.id) {
+      <div class="col-xs-12 col-md-8 offset-md-2">
+        <div class="card">
+          <div class="card-block">
+            <p class="card-text">
+              {{ comment.body }}
+            </p>
+          </div>
+          <div class="card-footer">
+            <a
+              [routerLink]="['/profiles', comment.author.username]"
+              class="comment-author"
+            >
+              <img [src]="comment.author.image" class="comment-author-img" />
+            </a>
+            &nbsp;
+            <a
+              [routerLink]="['/profiles', comment.author.username]"
+              class="comment-author"
+            >
+              {{ comment.author.username }}
+            </a>
+            <span class="date-posted">{{ comment.createdAt }}</span>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+}

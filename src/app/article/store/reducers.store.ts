@@ -7,6 +7,7 @@ const initialState: ArticleStateInterface = {
   isLoading: false,
   error: null,
   article: null,
+  comments: null,
 };
 
 const articleFeature = createFeature({
@@ -27,6 +28,20 @@ const articleFeature = createFeature({
       isLoading: false,
     })),
 
+    on(articleActions.getComments, (state) => ({
+      ...state,
+      isLoading: true,
+    })),
+    on(articleActions.getCommentsSuccess, (state, action) => ({
+      ...state,
+      isLoading: false,
+      comments: action.comments,
+    })),
+    on(articleActions.getCommentsError, (state) => ({
+      ...state,
+      isLoading: false,
+    })),
+
     on(routerNavigationAction, () => initialState),
   ),
 });
@@ -37,4 +52,5 @@ export const {
   selectIsLoading,
   selectError,
   selectArticle,
+  selectComments,
 } = articleFeature;

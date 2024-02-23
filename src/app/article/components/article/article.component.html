@@ -45,11 +45,18 @@
             <p>
               {{ data.article.body }}
             </p>
-            <h2 id="introducing-ionic">Introducing RealWorld.</h2>
-            <p>It's a great solution for learning how other frameworks work.</p>
             <mc-tag-list [tags]="data.article.tagList" />
           </div>
         </div>
+
+        <hr />
+        @if (data.comments) {
+          <mc-comments
+            [comments]="data.comments.comments"
+            [isLoading]="data.isLoading"
+            [error]="data.error"
+          />
+        }
       </div>
     }
   </div>

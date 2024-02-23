@@ -3,17 +3,19 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { combineLatest, filter, map } from 'rxjs';
-import { selectCurrentUser } from '../../auth/store/reducers.store';
-import { ErrorMessageComponent } from '../../shared/components/error-message/error-message.component';
-import { LoadingComponent } from '../../shared/components/loading/loading.component';
-import { TagListComponent } from '../../shared/components/tag-list/tag-list.component';
-import { CurrentUserInterface } from '../../shared/interfaces/currentUser.interface';
-import { articleActions } from '../store/actions.store';
+import { selectCurrentUser } from '../../../auth/store/reducers.store';
+import { ErrorMessageComponent } from '../../../shared/components/error-message/error-message.component';
+import { LoadingComponent } from '../../../shared/components/loading/loading.component';
+import { TagListComponent } from '../../../shared/components/tag-list/tag-list.component';
+import { CurrentUserInterface } from '../../../shared/interfaces/currentUser.interface';
+import { articleActions } from '../../store/actions.store';
 import {
   selectArticle,
+  selectComments,
   selectError,
   selectIsLoading,
-} from '../store/reducers.store';
+} from '../../store/reducers.store';
+import { CommentsComponent } from '../comments/comments.component';
 
 @Component({
   selector: 'mc-article',
@@ -25,6 +27,7 @@ import {
     ErrorMessageComponent,
     LoadingComponent,
     TagListComponent,
+    CommentsComponent,
   ],
 })
 export class ArticleComponent implements OnInit {
@@ -51,6 +54,7 @@ export class ArticleComponent implements OnInit {
     isLoading: this.store.select(selectIsLoading),
     error: this.store.select(selectError),
     article: this.store.select(selectArticle),
+    comments: this.store.select(selectComments),
     isAuthor: this.isAuthor$,
   });
 
@@ -61,6 +65,7 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(articleActions.getArticle({ slug: this.slug }));
+    this.store.dispatch(articleActions.getComments({ slug: this.slug }));
   }
 
   deleteArticle(): void {
